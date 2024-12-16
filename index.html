@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation</title>
+    <link rel="stylesheet" href="Static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Application Documentation</h1>
+    </header>
+    <main>
+        <section class="doc-section">
+            <h2>Function: check_password_strength</h2>
+            <p>
+                Checks the strength of a given password based on various criteria:
+            </p>
+            <ul>
+                <li>Length of the password (minimum 8 characters and maximum 15 characters).</li>
+                <li>Absence of spaces.</li>
+                <li>Having at least one digit.</li>
+                <li>Having at least one uppercase letter.</li>
+                <li>Having at least one special character.</li>
+                <li>Ensures the password is not too common or listed in a common password database.
+                    <ul class="common-passwords">
+                        <li>'password123'</li>
+                        <li>'admin123'</li>
+                        <li>'enrique'</li>
+                        <li>'12345678'</li>
+                        <li>'qwerty123'</li>
+                        <li>'letmein123'</li>
+                        <li>'welcome123'</li>
+                        <li>'111111'</li>
+                        <li>'password'</li>
+                        <li>'admin'</li>
+                        <li>'qwerty'</li>
+                        <li>'123456'</li>
+                        <li>'abc123'</li>
+                        <li>'password1'</li>
+                        <li>'qwerty1'</li>
+                        <li>'monkey123'</li>
+                        <li>'dragon123'</li>
+                        <li>'football'</li>
+                        <li>'baseball'</li>
+                        <li>'superman'</li>
+                        <li>'shadow'</li>
+                        <li>'hello123'</li>
+                        <li>'master'</li>
+                        <li>'letmein'</li>
+                    </ul>
+                </li>
+                <li>Avoids sequential characters and repeated characters.
+                    <ul class="sequential-chars">
+                        <li>abc</li>
+                        <li>bcd</li>
+                        <li>cde</li>
+                        <li>def</li>
+                        <li>efg</li>
+                        <li>fgh</li>
+                        <li>ghi</li>
+                        <li>hij</li>
+                        <li>ijk</li>
+                        <li>jkl</li>
+                        <li>klm</li>
+                        <li>lmn</li>
+                        <li>mno</li>
+                        <li>nop</li>
+                        <li>opq</li>
+                        <li>pqr</li>
+                        <li>qrs</li>
+                        <li>rst</li>
+                        <li>stu</li>
+                        <li>tuv</li>
+                        <li>uvw</li>
+                        <li>vwx</li>
+                        <li>wxy</li>
+                        <li>xyz</li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </section>
+        
+        <section class="doc-section">
+            <h2>Function: validate_phone_number</h2>
+            <p>
+                Validates a phone number to ensure it meets specific criteria:
+            </p>
+            <ul>
+                <li>Ensures the phone number is a valid 10-digit number.</li>
+                <li>Checks if the area code belongs to a predefined list of Ontario area codes.
+                    <ul class="area-codes">
+                        <li>416</li>
+                        <li>647</li>
+                        <li>437</li>
+                        <li>519</li>
+                        <li>226</li>
+                        <li>548</li>
+                        <li>613</li>
+                        <li>343</li>
+                        <li>705</li>
+                        <li>249</li>
+                        <li>807</li>
+                        <li>905</li>
+                        <li>289</li>
+                        <li>365</li>
+                    </ul>
+                </li>                
+                <li>Formats the phone number to a standard format if valid.</li>
+            </ul>
+        </section>
+        <section class="doc-section">
+            <h2>Algorithms</h2>
+        
+            <h3>1. Password Strength Checker Algorithm</h3>
+            <ol>
+                <li>Start with a score of 0</li>
+                <li>Check password length (8-15 characters)
+                    <ul>
+                        <li>If valid: Add 1 point</li>
+                        <li>If invalid: Add feedback message</li>
+                    </ul>
+                </li>
+                <li>Check for spaces
+                    <ul>
+                        <li>If no spaces: Add 1 point</li>
+                        <li>If spaces found: Add feedback message</li>
+                    </ul>
+                </li>
+                <li>Check for digits
+                    <ul>
+                        <li>If contains digit: Add 1 point</li>
+                        <li>If no digit: Add feedback message</li>
+                    </ul>
+                </li>
+                <li>Check for uppercase letters
+                    <ul>
+                        <li>If contains uppercase: Add 1 point</li>
+                        <li>If no uppercase: Add feedback message</li>
+                    </ul>
+                </li>
+                <li>Check for special characters
+                    <ul>
+                        <li>If contains special character: Add 1 point</li>
+                        <li>If no special character: Add feedback message</li>
+                    </ul>
+                </li>
+                <li>Additional checks (subtract 1 point each if found):
+                    <ul>
+                        <li>Check against common password list</li>
+                        <li>Check for sequential characters</li>
+                        <li>Check for repeated characters</li>
+                    </ul>
+                </li>
+                <li>Determine final strength based on score:
+                    <ul>
+                        <li>5+ points: Very Strong</li>
+                        <li>4 points: Strong</li>
+                        <li>3 points: Moderate</li>
+                        <li>2 points: Weak</li>
+                        <li>Below 2: Very Weak</li>
+                    </ul>
+                </li>
+            </ol>
+        
+            <h3>2. Phone Number Validator Algorithm</h3>
+            <ol>
+                <li>Remove all non-digit characters from input</li>
+                <li>Check if cleaned number is exactly 10 digits
+                    <ul>
+                        <li>If not 10 digits: Return invalid</li>
+                    </ul>
+                </li>
+                <li>Extract first 3 digits as area code</li>
+                <li>Check if area code is in Ontario area codes list
+                    <ul>
+                        <li>If not in list: Return invalid</li>
+                    </ul>
+                </li>
+                <li>Format valid number as: (XXX) XXX-XXXX</li>
+                <li>Return success with formatted number</li>
+            </ol>
+        </section>
+        
+        <section class="doc-section">
+            <h2>Test Cases</h2>
+            
+            <h3>1. Password Strength Checker</h3>
+            <div class="test-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test Case</th>
+                            <th>Password</th>
+                            <th>Expected Strength</th>
+                            <th>Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="code">P@ssw0rd!</td>
+                            <td class="very-strong">Very Strong</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="code">abc123XYZ#</td>
+                            <td class="strong">Strong</td>
+                            <td>Contains sequential characters</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="code">Admin123$</td>
+                            <td class="moderate">Moderate</td>
+                            <td>Common password pattern</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="code">Hello!!!222</td>
+                            <td class="weak">Weak</td>
+                            <td>Contains repeated characters</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="code">pass word1</td>
+                            <td class="very-weak">Very Weak</td>
+                            <td>Contains spaces</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td class="code">aaaaaBBB1!</td>
+                            <td class="weak">Weak</td>
+                            <td>Contains repeated characters</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="code">Short1!</td>
+                            <td class="very-weak">Very Weak</td>
+                            <td>Too short</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td class="code">SuperLongPassword123!</td>
+                            <td class="very-weak">Very Weak</td>
+                            <td>Too long</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td class="code">Qwerty123$</td>
+                            <td class="strong">Strong</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td class="code">Test@2023</td>
+                            <td class="very-strong">Very Strong</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>2. Phone Number Validator</h3>
+            <div class="test-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test Case</th>
+                            <th>Input Phone Number</th>
+                            <th>Is Valid</th>
+                            <th>Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="code">4165550199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (416) 555-0199</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="code">647-555-0199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (647) 555-0199</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="code">(905) 555-0199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (905) 555-0199</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="code">1234567890</td>
+                            <td class="invalid">False</td>
+                            <td>Invalid Ontario area code</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="code">416555019</td>
+                            <td class="invalid">False</td>
+                            <td>Phone number must be 10 digits</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td class="code">226-555-0199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (226) 555-0199</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="code">613.555.0199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (613) 555-0199</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td class="code">+1-289-555-0199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (289) 555-0199</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td class="code">705.555.0199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (705) 555-0199</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td class="code">437 555 0199</td>
+                            <td class="valid">True</td>
+                            <td>Valid phone number: (437) 555-0199</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </section>
+        
+        <section class="doc-section">
+            <h2>Route: index</h2>
+            <p>
+                Processes form submissions for password strength validation and phone number validation.
+                Handles POST requests with the following logic:
+            </p>
+            <ul>
+                <li>If a password is submitted, it checks its strength and provides feedback.</li>
+                <li>If a phone number is submitted, it validates the phone number and provides a message.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
